@@ -11,5 +11,8 @@ export const payHandler = (req: Request, res: Response) => {
     const recipient = (req.query.recipient as string);
     const amount = parseFloat(req.query.amount as string);
     const link = make(recipient, amount);
-    res.redirect(link);
+    res.json({
+        redirectUrl: link,
+        status: "success"
+    });
 };
