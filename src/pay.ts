@@ -12,8 +12,5 @@ export const payHandler = (req: Request, res: Response) => {
     const amount = Number(req.query.amount);
 
     const link = make(recipient, amount);
-    res.json({
-        status: "ok",
-        link,
-    });
+    res.redirect(302, link);
 };
