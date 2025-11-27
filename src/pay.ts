@@ -8,11 +8,12 @@ export function make(recipient: string, amount: number): string {
 
 // route handler
 export const payHandler = (req: Request, res: Response) => {
-    const recipient = (req.query.recipient as string);
-    const amount = parseFloat(req.query.amount as string);
+    const recipient = req.query.recipient as string;
+    const amount = Number(req.query.amount);
+
     const link = make(recipient, amount);
     res.json({
-        redirectUrl: link,
-        status: "success"
+        status: "ok",
+        link,
     });
 };
